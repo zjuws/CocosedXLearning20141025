@@ -28,7 +28,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
     auto scene = HelloWorld::createScene();
-
+//    auto scene=Scene::create();
+//    auto layer=Layer::create();
+//    scene->addChild(layer);
+//    Sprite *s=Sprite::create("HelloWorld.png");
+//    s->setAnchorPoint(Point(0,0));
+//    layer->addChild(s);
     // run
     director->runWithScene(scene);
 

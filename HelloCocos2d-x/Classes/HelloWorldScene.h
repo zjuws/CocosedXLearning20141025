@@ -2,8 +2,10 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
-
-class HelloWorld : public cocos2d::Layer
+#include "cocos-ext.h"
+USING_NS_CC_EXT;
+USING_NS_CC;
+class HelloWorld : public cocos2d::Layer,TableViewDataSource,TableViewDelegate
 {
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -17,6 +19,30 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+public:
+    virtual Size cellSizeForTable(TableView *table);
+    /**
+     * a cell instance at a given index
+     *
+     * @param idx index to search for a cell
+     * @return cell found at idx
+     */
+    virtual TableViewCell* tableCellAtIndex(TableView *table, ssize_t idx);
+    /**
+     * Returns number of cells in a given table view.
+     *
+     * @return number of cells
+     */
+    virtual ssize_t numberOfCellsInTableView(TableView *table);
+public:
+    virtual void tableCellTouched(TableView* table, TableViewCell* cell);
+    virtual void scrollViewDidScroll(ScrollView* view) {};
+    /**
+     * @js NA
+     * @lua NA
+     */
+    virtual void scrollViewDidZoom(ScrollView* view) {};
+
 };
 
 #endif // __HELLOWORLD_SCENE_H__
